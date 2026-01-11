@@ -120,8 +120,12 @@ def get_model_paths(grid_size, obstacle_density):
     Returns:
     - tuple: (model_path, env_config_path)
     """
-    model_path = f"../models/qlearning_agent_{grid_size}x{grid_size}_{obstacle_density:.2f}.pkl"
-    env_config_path = f"../models/environment_config_{grid_size}x{grid_size}_{obstacle_density:.2f}.pkl"
+    # Get the directory where this script is located
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    models_dir = os.path.join(script_dir, "..", "models")
+    
+    model_path = os.path.join(models_dir, f"qlearning_agent_{grid_size}x{grid_size}_{obstacle_density:.2f}.pkl")
+    env_config_path = os.path.join(models_dir, f"environment_config_{grid_size}x{grid_size}_{obstacle_density:.2f}.pkl")
     return model_path, env_config_path
 
 
